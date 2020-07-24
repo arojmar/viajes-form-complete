@@ -45,7 +45,8 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // this.elFormulario.controls.nombreDelViaje.setValue(this.viaje.nombreDelViaje);
+    // this.elFormulario.controls.nombreDelViaje.
+    // setValue(this.viaje.nombreDelViaje);
 
     // if (this.viaje) {
     //   this.elFormulario.patchValue(this.viaje);
