@@ -74,7 +74,6 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
       }
     });
     // this.elFormulario.controls.nombreDelViaje.setValue(this.viaje.nombreDelViaje);
-
     // if (this.viaje) {
     //   this.elFormulario.patchValue(this.viaje);
     // }
