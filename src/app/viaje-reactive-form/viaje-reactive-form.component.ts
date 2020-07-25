@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Viaje, ViajeEstado } from '../models/viaje';
 import { IdValue } from '../models/id-value';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-viaje-reactive-form',
@@ -77,10 +77,16 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
       nombreDelViaje: ['', Validators.required],
       tipoDelViaje: [''],
       duracion: [0],
-      destino: [''],
+      destino: ['', Validators.compose([this.destinoNoValido, Validators.required])],
       plazas: [0],
       visible: [true],
       estado: ['']
     });
+  }
+
+  destinoNoValido(control: FormControl): {[s: string]: boolean}{
+    if(control.value?.toLowerCase().indexOf('roma')>= 0) {
+      return { destinoNoValido: true };
+    }
   }
 }
