@@ -14,6 +14,9 @@
             <div class="field-element ">
                 <label>Destino</label>
                 <input type="text" formControlName="destino">
+                <div class="error" *ngIf="elFormulario.controls.destino.hasError('destinoNoValido')">
+                    Destino no valido
+                </div>
             </div>
 
             <div class="field-element ">
