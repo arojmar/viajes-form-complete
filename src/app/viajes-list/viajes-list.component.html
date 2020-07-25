@@ -1,0 +1,30 @@
+<h1>Listado de Viajes</h1>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo de Viaje</th>
+        <th scope="col">Duración</th>
+        <th scope="col">Destino</th>
+        <th scope="col">Plazas</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Estado</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of viajes">
+        <td>{{item.nombreDelViaje}}</td>
+        <td>{{item.tipoDelViaje}}</td>
+        <td>{{item.duracion}}</td>
+        <td>{{item.destino}}</td>
+        <td>{{item.plazas}}</td>
+        <td>{{item.visible}}</td>
+        <td>{{item.estado}}</td>
+        <td><button (click)="editarClick(item)">Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>{{viajes.length}} Viajes</h4>
+</div> 

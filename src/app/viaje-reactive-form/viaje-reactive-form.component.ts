@@ -17,7 +17,10 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
     if (value) {
       this.elFormulario.patchValue(value);
     }
-    this._viaje = value;
+    //  this._viaje = new Viaje(value);
+    // this._viaje = Object.assign({}, value);
+    // this._viaje = {...value};
+    // this._viaje = value;
   }
 
   // get viaje(): Viaje {
@@ -29,7 +32,6 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
   @Input() disabled = false;
 
   @Output() viajeChanged = new EventEmitter<Viaje>(false);
-
 
   elFormulario: FormGroup;
 
@@ -55,11 +57,23 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
   }
 
   guardar(formValue: any): void {
+    // console.table(formValue);
+    // if (!formValue.id){
+    //   formValue.id = uuid();
+    // }
     this.viajeChanged.emit(formValue);
+    this.elFormulario.reset();
+  }
+
+  nuevoViaje(): void {
+    // this._viaje = new Viaje();
+    this.elFormulario.reset();
+    console.table(this.elFormulario.value);
   }
 
   private buildFormulario(fb: FormBuilder): void {
     this.elFormulario = fb.group({
+      id: [''],
       nombreDelViaje: ['', Validators.required],
       tipoDelViaje: [''],
       duracion: [0],
