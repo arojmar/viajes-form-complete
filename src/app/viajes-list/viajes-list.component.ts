@@ -10,14 +10,14 @@ import { Viaje } from '../models/viaje';
 export class ViajesListComponent implements OnInit {
 
   @Input() viajes: Viaje[] = [];
-  @Output() viajeClicked = new EventEmitter<Viaje>(false);
+  @Output() viajeClicked = new EventEmitter<string>(false);
   constructor() { }
 
   ngOnInit(): void {
   }
   
   editarClick(item: Viaje): void {
-    this.viajeClicked.emit(item);
+    this.viajeClicked.emit(item.id);
   }
 
 
