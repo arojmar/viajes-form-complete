@@ -28,7 +28,21 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
   // }
 
   @Input() estados: IdValue[] = [];
-  @Input() tiposDeViajes: string[] = [];
+
+  _tiposDeViaje: string[];
+  _tiposDeViajeBackup: string[];
+
+  @Input() set tiposDeViajes(value:  string[]) {
+    if(value) {
+      this._tiposDeViajeBackup = value;
+      this._tiposDeViaje = value;
+    }
+  }
+
+  get tiposDeViajes(): string[] {
+    return this._tiposDeViaje;
+  }
+
   @Input() disabled = false;
 
   @Output() viajeChanged = new EventEmitter<Viaje>(false);
@@ -47,13 +61,33 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // this.elFormulario.controls.nombreDelViaje.
-    // setValue(this.viaje.nombreDelViaje);
+    this.elFormulario.controls.nombreDelViaje.valueChanges.subscribe(x => {
+      this.validarNombreDelViaje(x);
+    });
 
+
+    this.elFormulario.controls.destino.valueChanges.subscribe(x => {
+      if(x?.toLowerCase().indexOf('madrid') >= 0) {
+        this._tiposDeViaje = this._tiposDeViajeBackup.filter(v => v !== 'Tipo 2');
+      } else {
+        this._tiposDeViaje = this._tiposDeViajeBackup;
+      }
+    });
+    // this.elFormulario.controls.nombreDelViaje.setValue(this.viaje.nombreDelViaje);
     // if (this.viaje) {
     //   this.elFormulario.patchValue(this.viaje);
     // }
     // this.elFormulario.controls.nombreDelViaje2.setValue(this.viaje.nombreDelViaje);
+  }
+
+  private validarNombreDelViaje(x: any): void {
+    if (x?.toLowerCase().indexOf('madrid') >= 0) {
+      this.elFormulario.controls.destino.patchValue('España');
+      this.elFormulario.controls.tipoDelViaje.disable();
+    }
+    else {
+      this.elFormulario.controls.tipoDelViaje.enable();
+    }
   }
 
   guardar(formValue: any): void {
