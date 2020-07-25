@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ViajeNgformComponent } from './viaje-ngform/viaje-ngform.component';
 import { ViajeReactiveFormComponent } from './viaje-reactive-form/viaje-reactive-form.component';
 import { ViajesListComponent } from './viajes-list/viajes-list.component';
+import { ViajesService } from './services/viajes.services';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ViajesListComponent } from './viajes-list/viajes-list.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ViajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
