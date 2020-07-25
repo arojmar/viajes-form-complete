@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IdValue } from './models/id-value';
 import { ViajeEstado, Viaje } from './models/viaje';
+import { v4 as uuid } from 'uuid';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { ViajeEstado, Viaje } from './models/viaje';
 })
 export class AppComponent implements OnInit {
 
+  viajes: Viaje[]= [];
   estados: IdValue[] = [];
   tiposDeViajes = ['Tipo 1', 'Tipo 2', 'Tipo 3'];
   viaje: Viaje;
@@ -18,13 +21,34 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.viaje = this.cargarViaje(7);
-    }, 5000);
+    // setTimeout(() => {
+    this.viajes.push(this.cargarViaje(7));
+    // }, 5000);
   }
 
   guardar(v: Viaje): void {
-    console.table(v);
+    if(v){
+
+      if(v.id){
+        // buscar el viaje y actualizarlo en la lista
+        const idx = this.viajes.findIndex(x => x.id === v.id);
+
+        if(idx >= 0 ) {
+          this.viajes[idx] = v;
+          this.viajes = [...this.viajes];
+        }
+      } else {
+        v.id = new uuid();
+        this.viajes.push(v);
+      }
+    }
+  }
+
+  editarViaje(v: Viaje): void{
+    if(v){
+      v.plazas++;
+      this.viaje = v;
+    }
   }
 
   private cargarEstados(): IdValue[] {
@@ -43,7 +67,7 @@ export class AppComponent implements OnInit {
 
     // imaginad que llamamos a la bbdd y pedido el viaje con id = 7
     const viaje = new Viaje({
-      id: 7,
+      id: uuid(),
       nombreDelViaje: 'Crucero por las Islas Griegas',
       destino: ' Grecia',
       duracion: 7,
