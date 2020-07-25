@@ -10,6 +10,7 @@
         <th scope="col">Plazas</th>
         <th scope="col">Visible</th>
         <th scope="col">Estado</th>
+        <th scope="col">Fecha de Salida</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -21,7 +22,8 @@
         <td>{{item.destino}}</td>
         <td>{{item.plazas}}</td>
         <td>{{item.visible}}</td>
-        <td>{{item.estado}}</td>
+        <td>{{item.estado |estado}}</td>
+        <td>{{item.fechaDeSalida |date: 'fullDate':'':'es'|uppercase}}</td>
         <td><button (click)="editarClick(item)">Editar</button></td>
       </tr>
     </tbody>

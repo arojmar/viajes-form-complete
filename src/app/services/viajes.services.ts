@@ -17,7 +17,8 @@ export class ViajesService {
             plazas: 30,
             estado: ViajeEstado.AbiertoHastaElAmanecer,
             tipoDelViaje: 'Crucero',
-            visible: true
+            visible: true,
+            fechaDeSalida: new Date(2020, 9, 20)
         }));
      }
 
@@ -61,7 +62,7 @@ export class ViajesService {
     }
 
     getViaje(id: string): Viaje {
-        return this.viajes.find(x => x.id);
+        return this.viajes.find(x => x.id === id);
     }
     
 
