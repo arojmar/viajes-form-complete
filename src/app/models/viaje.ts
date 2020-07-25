@@ -14,6 +14,7 @@ export class Viaje {
     plazas?: number; // input
     visible: boolean; // select || check || radio button
     estado: ViajeEstado; // select
+    fechaDeSalida: Date;
 
     constructor(item?: any) {
         this.id = item?.id || '';
@@ -24,5 +25,6 @@ export class Viaje {
         this.plazas = item?.plazas || 0;
         this.visible = item && item.visible != null ? item.visible : false;
         this.estado = item?.estado || ViajeEstado.AbiertoHastaElAmanecer;
+        this.fechaDeSalida = item?.fechaDeSalida ? new Date(item.fechaDeSalida) : null;
     }
 }

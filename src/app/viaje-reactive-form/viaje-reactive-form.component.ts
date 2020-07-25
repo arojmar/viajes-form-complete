@@ -95,8 +95,10 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges {
     // if (!formValue.id){
     //   formValue.id = uuid();
     // }
-    this.viajeChanged.emit(formValue);
-    this.elFormulario.reset();
+    if(formValue){
+      this.viajeChanged.emit(formValue);
+      this.elFormulario.reset();
+    }
   }
 
   nuevoViaje(): void {
