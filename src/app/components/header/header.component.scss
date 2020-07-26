@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(50, 50, 189);
+    color: white;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .menu-item {
+    margin-right: 20px;
+    font-size: 1.2em;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+  
