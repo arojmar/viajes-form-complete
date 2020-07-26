@@ -12,6 +12,7 @@
         <th scope="col">Estado</th>
         <th scope="col">Fecha de Salida</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         <td>{{item.visible}}</td>
         <td>{{item.estado |estado}}</td>
         <td>{{item.fechaDeSalida |date: 'fullDate':'':'es'|uppercase}}</td>
+        <td><button (click)="deleteClick(item)">Borrar</button></td>
         <td><button (click)="editarClick(item)">Editar</button></td>
       </tr>
     </tbody>

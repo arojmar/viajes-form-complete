@@ -1,3 +1,5 @@
+import { ɵInternalFormsSharedModule } from '@angular/forms';
+
 export enum ViajeEstado {
     AbiertoHastaElAmanecer = 1,
     Cerrado = 2,
@@ -18,7 +20,7 @@ export class Viaje {
 
     constructor(item?: any) {
         this.id = item?.id || '';
-        this.nombreDelViaje = item?.nombreDelViaje || '';
+        this.nombreDelViaje = item?.nombreDelViaje || item?.nombre || '';
         this.tipoDelViaje = item?.tipoDelViaje || '';
         this.duracion = item?.duracion || 0;
         this.destino = item?.destino || '';

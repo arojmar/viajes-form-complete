@@ -1,0 +1,52 @@
+[
+    {
+      "id": "93bbcd93-8e0d-45a6-ba2b-8f3fb3b5adde",
+      "nombreDelViaje": "nisi minim reprehenderit",
+      "tipoDelViaje": "Tipo 2",
+      "destino": "ea",
+      "plazas": 48,
+      "visible": false,
+      "estado": 4,
+      "fechaDeSalida": "Sat Jun 28 2014 23:21:18 GMT+0000"
+    },
+    {
+      "id": "ea8a1c1a-7c5f-4c15-9e7d-7113e716f7f9",
+      "nombreDelViaje": "id ex enim",
+      "tipoDelViaje": "Tipo 1",
+      "destino": "aliqua",
+      "plazas": 41,
+      "visible": true,
+      "estado": 3,
+      "fechaDeSalida": "Sun Feb 08 2015 21:36:25 GMT+0000"
+    },
+    {
+      "id": "68f29b8c-d222-4f9c-8c18-55c44c630e11",
+      "nombreDelViaje": "duis id mollit",
+      "tipoDelViaje": "Tipo 3",
+      "destino": "pariatur",
+      "plazas": 25,
+      "visible": false,
+      "estado": 4,
+      "fechaDeSalida": "Sat Nov 25 2017 11:54:38 GMT+0000"
+    },
+    {
+      "id": "3e819330-1dcc-42fc-a7ea-0710d2a5dee0",
+      "nombreDelViaje": "commodo laborum dolor",
+      "tipoDelViaje": "Tipo 1",
+      "destino": "id",
+      "plazas": 50,
+      "visible": true,
+      "estado": 2,
+      "fechaDeSalida": "Sun Jul 12 2020 20:22:12 GMT+0000"
+    },
+    {
+      "id": "fa360664-c9f1-4a06-b698-e72706cd95eb",
+      "nombreDelViaje": "ad elit irure",
+      "tipoDelViaje": "Tipo 1",
+      "destino": "aliquip",
+      "plazas": 29,
+      "visible": false,
+      "estado": 1,
+      "fechaDeSalida": "Thu Mar 06 2014 02:06:38 GMT+0000"
+    }
+  ]
