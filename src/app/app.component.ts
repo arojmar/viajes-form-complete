@@ -59,16 +59,18 @@ export class AppComponent implements OnInit {
     if (id) {
       this.viajeService.deleteViaje(id).subscribe(x => {
         if(x){
+          this.cargarViajes();
           alert('El viaje se ha borrado');
         } else {
           alert('El viaje no se ha podido eliminar');
         }
+        
       });
     }
   }
 
   private cargarViajes(): void {
-    this.viajeService.getViajesList2().subscribe(x => {
+    this.viajeService.getViajesList().subscribe(x => {
       if (x) {
         this.viajes = x;
       }
