@@ -25,13 +25,15 @@ export class ViajesService {
         }));
      }
 
-    getViajesList(): Viaje[] { 
-      return this.viajes;
-    }
+    // getViajesList(): Viaje[] { 
+    //   return this.viajes;
+    // }
 
-    getViajesList2(): Observable<Viaje[]> {
+    getViajesList(): Observable<Viaje[]> {
 
-      const url = '/assets/mocks/viajes.json';
+      // const url = '/assets/mocks/viajes.json';
+      const url = 'https://5f195874e104860016baeae6.mockapi.io/api/Viajes';
+
 
       return this.http.get<any[]>(url)
       .pipe(map((x: any[]) => {
@@ -72,8 +74,10 @@ export class ViajesService {
     // }
 
     guardar(v: Viaje): Observable<Viaje> {
-      const urlPost = 'http://localhost:8080/viajes';
-      const urlPut = `http://localhost:8080/viajes/${v.id}`;
+      // const urlPost = 'http://localhost:8080/viajes';
+      // const urlPut = `http://localhost:8080/viajes/${v.id}`;
+      const urlPost = 'https://5f195874e104860016baeae6.mockapi.io/api/Viajes';
+      const urlPut = `https://5f195874e104860016baeae6.mockapi.io/api/Viajes/${v.id}`;
       
       if (v.id) {
         // return this.http.put<any>(`./assets/mocks/viaje-${v.id}.json`, v);  
@@ -108,13 +112,15 @@ export class ViajesService {
     getViaje(id: string): Observable<Viaje> {
         
       // const url = `http://localhost:8080/viajes/${id}`;
-      const url = `./assets/mocks/viaje-${id}.json`;
+      // const url = `./assets/mocks/viaje-${id}.json`;
+      const url = `https://5f195874e104860016baeae6.mockapi.io/api/Viajes/${id}`;
 
-      const headers: HttpHeaders = new HttpHeaders({
-        Authetication: 'Bearer AsvaIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk'});
+      // const headers: HttpHeaders = new HttpHeaders({
+      //   Authetication: 'Bearer AsvaIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk'});
       // El metodo pipe encadena operadores que realizan transformaciones
       // configuro una peticion http y aplico transformaciones
-    return this.http.get<any>(url, { headers }).pipe(
+    // return this.http.get<any>(url, { headers }).pipe(
+    return this.http.get<any>(url).pipe(
         map((x: any) => {
           return new Viaje(x);
         }),
@@ -147,7 +153,8 @@ export class ViajesService {
     // }
     
     deleteViaje(id: string): Observable<any> {
-      const url = `./assets/mocks/viaje-${id}.json`;
+      // const url = `./assets/mocks/viaje-${id}.json`;
+      const url = `https://5f195874e104860016baeae6.mockapi.io/api/Viajes/${id}`;
 
       return this.http.delete<any>(url).pipe(catchError(() => {
         console.error('Ha ocurrido un error al eliminar el viaje');
