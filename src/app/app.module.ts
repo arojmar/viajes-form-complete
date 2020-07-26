@@ -9,6 +9,7 @@ import { ViajesService } from './services/viajes.services';
 import { EstadoPipe } from './estado.pipe';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEs, 'es');
 
@@ -23,7 +24,8 @@ registerLocaleData(localeEs, 'es');
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    HttpClientModule
   ],
   providers: [ViajesService,
    {provide: LOCALE_ID, useValue: 'es'}],

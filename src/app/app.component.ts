@@ -23,22 +23,47 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.tiposDeViajes = this.viajeService.getTiposDeViajes();
     // this.viajeService.guardar(this.cargarViaje(7));
-    this.viajes = this.viajeService.getViajesList();
     this.estados = this.viajeService.getEstados();
+    this.cargarViajes();
     // setTimeout(() => {
     // this.viajes.push(this.cargarViaje(7));
     // }, 5000);
   }
 
   guardar(v: Viaje): void {
-    this.viajeService.guardar(v);
-    this.viajes = this.viajeService.getViajesList();
+    this.viajeService.guardar(v).subscribe(x => {
+      if (x) {
+        this.viaje = x;
+        this.cargarViajes();
+      }
+    });
   }
 
   editarViaje(id: string): void{
     if(id){
-      this.viaje = this.viajeService.getViaje(id);
+      this.viajeService.getViaje(id).subscribe(x => {
+        this.viaje = x;
+      });
     }
   }
 
+  deleteViaje(id: string): void{
+    if (id) {
+      this.viajeService.deleteViaje(id).subscribe(x => {
+        if(x){
+          alert('El viaje se ha borrado');
+        } else {
+          alert('El viaje no se ha podido eliminar');
+        }
+      });
+    }
+  }
+
+  private cargarViajes(): void {
+    this.viajeService.getViajesList2().subscribe(x => {
+      if (x) {
+        this.viajes = x;
+      }
+    });
+  }
 }

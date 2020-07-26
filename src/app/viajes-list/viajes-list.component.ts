@@ -11,6 +11,7 @@ export class ViajesListComponent implements OnInit {
 
   @Input() viajes: Viaje[] = [];
   @Output() viajeClicked = new EventEmitter<string>(false);
+  @Output() deleteClicked = new EventEmitter<string>(false);
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +21,8 @@ export class ViajesListComponent implements OnInit {
     this.viajeClicked.emit(item.id);
   }
 
+  deleteClick(item: Viaje): void {
+    this.deleteClicked.emit(item.id);
+  }
 
 }
