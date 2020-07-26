@@ -1,0 +1,6 @@
+<app-loading [hidden]="!loading"></app-loading>
+<app-viajes-list
+ [viajes]="viajes"
+ (viajeClicked)="editarViaje($event)"
+ (deleteClicked)="deleteViaje($event)">
+</app-viajes-list>

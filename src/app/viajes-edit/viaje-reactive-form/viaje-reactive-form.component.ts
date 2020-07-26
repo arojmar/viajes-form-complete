@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { Viaje, ViajeEstado } from '../models/viaje';
-import { IdValue } from '../models/id-value';
+import { Viaje, ViajeEstado } from '../../models/viaje';
+import { IdValue } from '../../models/id-value';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({

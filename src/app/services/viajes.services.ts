@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { IdValue } from '../models/id-value';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, delay } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ViajesService {
@@ -38,7 +38,7 @@ export class ViajesService {
       return this.http.get<any[]>(url)
       .pipe(map((x: any[]) => {
            return x.map(c => new Viaje(c));
-        })
+        }), delay(3500)
       );
     }
 
