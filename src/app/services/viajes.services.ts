@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Viaje, ViajeEstado } from '../models/viaje';
 import { v4 as uuid } from 'uuid';
 import { IdValue } from '../models/id-value';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -40,20 +40,16 @@ export class ViajesService {
       );
     }
 
-    getTiposDeViajes(): string[] {
-        return ['Tipo 1', 'Tipo 2', 'Tipo 3'];
+    getTiposDeViajes(): Observable<string[]> {
+      const url = '/assets/mocks/tipos-de-viajes.json';
+      return this.http.get<any[]>(url);
     }
 
-    getEstados(): IdValue[] {
-        
-    const result: IdValue[] = [];
-
-    result.push({ id: ViajeEstado.AbiertoHastaElAmanecer, value: 'Abierto hasta el amanacer' });
-    result.push({ id: ViajeEstado.Cancelado, value: 'Cancelado por inclemencias' });
-    result.push({ id: ViajeEstado.Cerrado, value: 'Completado el aforo' });
-    result.push({ id: ViajeEstado.Postpuesto, value: 'Postpuesto hasta nuevo aviso' });
-
-    return result;
+    getEstados():  Observable<IdValue[]> {
+      const url = '/assets/mocks/estados.json';
+      return this.http.get<any[]>(url).pipe(map(x => {
+        return x.map(item => ({ id: item.id || null, value: item.value || 'Sin descripcion' }));
+      }));
     }
     
 
@@ -114,9 +110,11 @@ export class ViajesService {
       // const url = `http://localhost:8080/viajes/${id}`;
       const url = `./assets/mocks/viaje-${id}.json`;
 
+      const headers: HttpHeaders = new HttpHeaders({
+        Authetication: 'Bearer AsvaIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk'});
       // El metodo pipe encadena operadores que realizan transformaciones
       // configuro una peticion http y aplico transformaciones
-      return this.http.get<any>(url).pipe(
+    return this.http.get<any>(url, { headers }).pipe(
         map((x: any) => {
           return new Viaje(x);
         }),

@@ -21,9 +21,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tiposDeViajes = this.viajeService.getTiposDeViajes();
+    this.viajeService.getTiposDeViajes().subscribe(x => {
+      if (x) {
+        this.tiposDeViajes = x;
+      }
+    });
     // this.viajeService.guardar(this.cargarViaje(7));
-    this.estados = this.viajeService.getEstados();
+    this.viajeService.getEstados().subscribe(x => {
+      if (x) {
+        this.estados = x;
+      }
+    });
     this.cargarViajes();
     // setTimeout(() => {
     // this.viajes.push(this.cargarViaje(7));
